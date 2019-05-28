@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_185622) do
+ActiveRecord::Schema.define(version: 2019_05_28_203049) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "gender"
-    t.string "race"
-    t.string "class_value"
+    t.integer "race"
+    t.integer "class_value"
     t.string "skill"
     t.string "inventory"
     t.integer "exp"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2019_05_28_185622) do
     t.integer "hitpoints"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "charclasses", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name"
   end
 
 end

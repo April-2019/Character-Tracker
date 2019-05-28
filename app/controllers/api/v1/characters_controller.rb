@@ -4,7 +4,7 @@ class Api::V1::CharactersController < ApplicationController
       @characters = Character.all
       render json: @characters
     end
-   
+
     def update
       @character.update(character_params)
       if @character.save
@@ -15,11 +15,11 @@ class Api::V1::CharactersController < ApplicationController
     end
    
     private
-   
+
     def character_params
       params.permit(:name, :gender, :race, :class, :skill, :inventory, :exp, :strength, :dexterity, :constitution, :wisdom, :charisma, :hitpoints)
     end
-   
+
     def find_character
       @character = Character.find(params[:id])
     end
