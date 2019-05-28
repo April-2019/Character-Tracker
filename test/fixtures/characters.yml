@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name,: MyString
+  gender,: MyString
+  race,: MyString
+  class,: MyString
+  skill,: MyString
+  inventory,: MyString
+  exp: 
+  strength: 
+  dexterity: 
+  constitution: 
+  wisdom: 
+  charisma: 
+  hitpoints: 1
+
+two:
+  name,: MyString
+  gender,: MyString
+  race,: MyString
+  class,: MyString
+  skill,: MyString
+  inventory,: MyString
+  exp: 
+  strength: 
+  dexterity: 
+  constitution: 
+  wisdom: 
+  charisma: 
+  hitpoints: 1
