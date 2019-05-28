@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_203049) do
     t.integer "charisma"
     t.integer "hitpoints"
     t.string "image_url"
+    t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

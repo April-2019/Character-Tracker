@@ -38,4 +38,4 @@ charclasses.each do |charclass|
   Charclass.create(name: charclass)
 end
 
- Character.create(name: 'Charles', gender: 'Male', race: 5, class_value: 5, skill: 'Stealth', inventory: 'empty', exp: 100, strength: 20, dexterity: 40, constitution: 60, wisdom: 20, charisma: 80, hitpoints:20) 
+ Character.create(name: 'Charles', gender: 'Male', race: 5, class_value: 5, skill: 'Stealth', inventory: 'empty', exp: 100, strength: 20, dexterity: 40, constitution: 60, wisdom: 20, charisma: 80, hitpoints:20, level: 5) 

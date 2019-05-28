@@ -13,11 +13,11 @@ class Api::V1::CharactersController < ApplicationController
         render json: { errors: @character.errors.full_messages }, status: :unprocessible_entity
       end
     end
-
+   
     private
 
     def character_params
-      params.permit(:name, :gender, :race, :class, :skill, :inventory, :exp, :strength, :dexterity, :constitution, :wisdom, :charisma, :hitpoints)
+      params.permit(:name, :gender, :race, :class, :skill, :inventory, :exp, :strength, :dexterity, :constitution, :wisdom, :charisma, :hitpoints, :level)
     end
 
     def find_character

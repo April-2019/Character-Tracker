@@ -16,6 +16,7 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
       t.integer :charisma
       t.integer :hitpoints
       t.string :image_url
+      t.integer :level
 
 
       t.timestamps
