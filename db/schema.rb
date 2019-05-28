@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 2019_05_28_203049) do
     t.integer "strength"
     t.integer "dexterity"
     t.integer "constitution"
+    t.integer "intelligence"
     t.integer "wisdom"
     t.integer "charisma"
     t.integer "hitpoints"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
