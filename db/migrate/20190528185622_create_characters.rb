@@ -14,6 +14,7 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
       t.integer :wisdom
       t.integer :charisma
       t.integer :hitpoints
+      t.integer :level
 
       t.timestamps
     end
