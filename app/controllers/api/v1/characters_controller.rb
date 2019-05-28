@@ -13,10 +13,6 @@ class Api::V1::CharactersController < ApplicationController
         render json: { errors: @character.errors.full_messages }, status: :unprocessible_entity
       end
     end
-
-    def test
-      puts "test"
-    end
    
     private
    
