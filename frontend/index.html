@@ -1,23 +1,123 @@
-<div class="continer">
-    <div class="row">
-        <div class="col-sm-4">
-            <div id= "Character">
-                <h4 class= "Center">Character</h4>
-                <form id='character_form'>
-                    <p>Name:<input type="text" name="name" placeholder="Character Name" value=""><br></p>
-                    <p>Strength:<input type="text" name="strength" placeholder="Strength" value=""><br></p>
-                    <p>Dexterity:<input type="text" name="dexterity" placeholder="Dexterity" value=""><br></p>
-                    <p>Constitution:<input type="text" name="constitution" placeholder="Constitution" value=""><br></p>
-                    <p>Intelligence:<input type="text" name="intelligence" placeholder="Intelligence" value=""><br></p>
-                    <p>Wisdom:<input type="text" name="wisdom" placeholder="Wisdom" value=""><br></p>
-                    <p>Charisma:<input type="text" name="charisma" placeholder="Charisma" value=""><br></p>
-                    <p>HitPoints<input type="text" name="hitpoints" placeholder="HitPoints" value=""><br></p>
-                    <p>Skills:
-                        <br><textarea rows="4" cols="50" type="text" name="skills" placeholder="Skills" value=""></textarea><br></p>
-                </form>
-            </div>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-rows: repeat(11, 1fr);
+    grid-gap:1em;
+    grid-auto-rows: minmax(50px, auto);
+}
+
+.wrapper > div{
+    background: #eee;
+    padding:1em;
+}
+
+.wrapper >div:nth-child(odd){
+    background: #ddd
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.header{
+    grid-column: 1/5;
+    grid-row: 1/2;
+}
+.stats {
+    grid-column:1/2;
+    grid-row:2/8;
+}
+
+.skills{
+    grid-column:1/2;
+    grid-row:8/12;
+}
+
+.character{
+    grid-column:2/3;
+    grid-row:2/3;
+}
+
+.name{
+    grid-column:2/3;
+    grid-row:3/4;
+}
+
+.image{
+    grid-column:2/3;
+    grid-row:4/8;
+}
+
+.notes{
+    grid-column:2/5;
+    grid-row:8/12;
+}
+
+.hp{
+    grid-column:3/4;
+    grid-row:2/3;
+}
+
+.inventory{
+    grid-column:3/5;
+    grid-row:3/8;
+}
+
+.level{
+    grid-column:4/5;
+    grid-row:2/3;
+}
+
+</style>
+</head>
+<body>
+    <form id='character_form'>
+    <div class="wrapper">
+        <div class="header">
+            Insert Logo/Text
         </div>
+        <div class="stats">
+            Stats:
+            <p>Strength:<input type="text" name="strength" placeholder="Strength" value=""><br></p>
+            <p>Dexterity:<input type="text" name="dexterity" placeholder="Dexterity" value=""><br></p>
+            <p>Constitution:<input type="text" name="constitution" placeholder="Constitution" value=""><br></p>
+            <p>Intelligence:<input type="text" name="intelligence" placeholder="Intelligence" value=""><br></p>
+            <p>Wisdom:<input type="text" name="wisdom" placeholder="Wisdom" value=""><br></p>
+            <p>Charisma:<input type="text" name="charisma" placeholder="Charisma" value=""><br></p>
+        </div>
+        <div class="skills">
+            <p>Skills:<br><textarea rows="4" cols="50" type="text" name="skills" placeholder="Skills" value=""></textarea><br></p>
+        </div>
+        <div class="character">
+            Choose Character
+        </div>  
+        <div class="name">
+            <p>Name:<input type="text" name="name" placeholder="Character Name" value=""><br></p>
+        </div>
+        <div class="image">
+            Character Image
+        </div>
+        <div class="notes">
+            Notes
+        </div>  
+        <div class="hp">
+            <p>HitPoints<input type="text" name="hitpoints" placeholder="HitPoints" value=""><br></p>
+        </div>
+        <div class="inventory">
+            Inventory
+        </div>
+        <div class="level">
+            Level
+        </div>  
     </div>
-</div>
-
-
+    </form>
+</body>
+</html>
