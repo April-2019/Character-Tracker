@@ -27,19 +27,30 @@ option2.selected = true
 option2.disabled = true
 select2.append(option2)
     
-    
+let button = document.createElement("button")
+let submitForm = document.querySelector(".submit")
+submitForm.append(button)
+button.innerText = "Submit"
     
     
 button.addEventListener("click", (e) =>{
     e.preventDefault()
-    if (button.innerText == "Submit"){
-        
-        
-        button.innerText = "Edit"
-    }
-    else{
-        console.log("OW")
-    }
+    postChar()
+    console.log("got here")
+    button.disabled = true
+    // if (button.innerText == "Submit"){
+    //     // function postChar()
+    //     button.innerText = "Edit"
+    // }
+    // else if(button.innerText == "Edit"){
+    //     button.innerText = "Enter"
+    // }
+    
+    // else {
+    //     // function patchChar()
+    //     console.log("woah")
+    //     button.innerText = "Edit"
+    // }
 })
 
 let option3 = document.createElement('option')
@@ -49,8 +60,59 @@ option3.disabled = true
 select3.append(option3)
 
 
-let submit = document.getElementById("Submit button")
-submit.preventDefault()
+function postChar(){
+    fetch(CharacterURL,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'name' : form[3].value,
+            'race_id' : form[1].value,
+            'class_value' : form[2].value,
+            'skill' : form[10].value,
+            'inventory' : form[13].value,
+            // 'exp' : placeholder,
+            'strength' : form[4].value,
+            'dexterity' : form[5].value,
+            'constitution' : form[6].value,
+            'intelligence' : form[7].value,
+            'wisdom' : form[8].value,
+            'charisma' : form[9].value,
+            'hitpoints' : form[12].value,
+            'image_url' : form[14].value
+            // 'level' : placeholder
+        })
+    })
+    // .then(res => res.json())
+    // .then(console.log)
+}
+
+function patchChar(id){
+    fetch(`http://localhost:3000/api/v1/characters/${id}`,{
+        method: 'PATCH',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            'name' : form[3].value,
+            'race_id' : form[1].value,
+            'class_value' : form[2].value,
+            'skill' : form[10].value,
+            'inventory' : form[13].value,
+            // 'exp' : placeholder,
+            'strength' : form[4],
+            'dexterity' : form[5].value,
+            'constitution' : form[6].value,
+            'intelligence' : form[7].value,
+            'wisdom' : form[8].value,
+            'charisma' : form[9].value,
+            'hitpoints' : form[12].value,
+            'image_url' : form[14].value
+            // 'level' : placeholder
+        })
+    })
+}
 
 function fetchingCharacters(){
     fetch(CharacterURL)
@@ -101,7 +163,7 @@ select1.addEventListener('change',(e)=>{
     let char = allChars.find(char => char.id === e.target.selectedIndex)
     let race_name = allRaces.find(race => race.id === char.race_id)
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
- debugger
+    button.innerText = "edit"
     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     document.querySelector('.strength').innerText = `Strength: ${char.strength}`
     document.querySelector('.dexterity').innerText = `Dexterity: ${char.dexterity}`
