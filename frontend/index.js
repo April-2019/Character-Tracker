@@ -26,6 +26,21 @@ option2.innerText = "Select Race"
 option2.selected = true
 option2.disabled = true
 select2.append(option2)
+    
+    
+    
+    
+button.addEventListener("click", (e) =>{
+    e.preventDefault()
+    if (button.innerText == "Submit"){
+        
+        
+        button.innerText = "Edit"
+    }
+    else{
+        console.log("OW")
+    }
+})
 
 let option3 = document.createElement('option')
 option3.innerText = "Select Class"
