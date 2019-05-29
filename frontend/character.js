@@ -15,8 +15,9 @@ class Character {
         this.charisma = charisma
         this.hitpoints = hitpoints
         this.level = level
+        this.image_url = image_url
     }
 
-    
+
 
 }

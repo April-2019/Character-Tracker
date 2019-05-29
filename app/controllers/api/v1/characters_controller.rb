@@ -17,7 +17,7 @@ class Api::V1::CharactersController < ApplicationController
     private
 
     def character_params
-      params.permit(:name, :gender, :race, :class_value, :skill, :inventory, :exp, :strength, :dexterity, :constitution, :wisdom, :charisma, :hitpoints, :level)
+      params.permit(:name, :gender, :race_id, :class_value, :skill, :inventory, :exp, :strength, :dexterity, :constitution, :wisdom, :charisma, :hitpoints, :level, :image_url)
     end
 
     def find_character
