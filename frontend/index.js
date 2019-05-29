@@ -19,4 +19,3 @@ fetch(CharacterURL)
 
 
 })
-
