@@ -25,8 +25,13 @@ function fetchingCharacters(){
 function renderCharacter(char){
     let opt = document.createElement("option")
     opt.innerText = char.name
+    opt.setAttribute("id", char.id)
     selectTag.append(opt)
 }
+
+selectTag.addEventListener("change", (e) => {
+
+})
 
 // selectTag.addEventListener('change',(e)=>{
     

@@ -1,8 +1,12 @@
 class Api::V1::CharactersController < ApplicationController
-    before_action :find_character, only: [:update]
+    before_action :find_character, only: [:update, :show]
     def index
       @characters = Character.all
       render json: @characters
+    end
+
+    def show
+      render json: @character
     end
 
     def update
