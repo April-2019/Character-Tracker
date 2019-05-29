@@ -1,9 +1,9 @@
 class Character {
 
-    constructor(name, gender, race, class_value, skill, inventory, exp, strength, dexterity, constitution, wisdom, charisma, hitpoints, level){
+    constructor(name, gender, race_id, class_value, skill, inventory, exp, strength, dexterity, constitution, wisdom, charisma, hitpoints, level){
         this.name = name
         this.gender = gender
-        this.race = race
+        this.race_id = race_id
         this.class_value = class_value
         this.skill = skill
         this.inventory = inventory
