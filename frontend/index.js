@@ -33,6 +33,10 @@ option3.selected = true
 option3.disabled = true
 select3.append(option3)
 
+
+let submit = document.getElementById("Submit button")
+submit.preventDefault()
+
 function fetchingCharacters(){
     fetch(CharacterURL)
     .then(res => res.json())
