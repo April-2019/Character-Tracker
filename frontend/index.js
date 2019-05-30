@@ -185,7 +185,7 @@ function patchChar(id){
             'skill' : form[9].value,
             'inventory' : form[12].value,
             // 'exp' : placeholder,
-            'strength' : form[3],
+            'strength' : form[3].value,
             'dexterity' : form[4].value,
             'constitution' : form[5].value,
             'intelligence' : form[6].value,
@@ -196,6 +196,48 @@ function patchChar(id){
             // 'level' : placeholder
         })
     })
+    .then(res => res.json())
+    .then(obj => {
+      let race_name = allRaces.find(race => race.id === obj.race_id)
+      let shirt = allClasses.find(shirt => shirt.id === obj.class_value)
+      document.querySelector('.name').innerText = `${obj.name} the level ${obj.level} ${race_name.name} ${shirt.name}`
+      //form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+      document.querySelector('.strength').innerText = `Strength: ${obj.strength}`
+      //form[4].value = `Strength: ${char.strength}`
+      document.querySelector('.dexterity').innerText = `Dexterity: ${obj.dexterity}`
+      document.querySelector('.constitution').innerText = `Constitution: ${obj.constitution}`
+      document.querySelector('.intelligence').innerText = `Intelligence: ${obj.intelligence}`
+      document.querySelector('.wisdom').innerText = `Wisdom: ${obj.wisdom}`
+      document.querySelector('.charisma').innerText = `Charisma: ${obj.charisma}`
+      document.querySelector('.skills').innerText = `Skills: ${obj.skill}`
+      document.querySelector('.hp').innerText = `Health: ${obj.hitpoints}`
+      let hp = document.querySelector('.hp')//.firstElementChild
+      hp.innerText = "Health:"
+      let div = document.createElement('div')
+      div.innerText = `${obj.hitpoints}`
+      div.setAttribute("class","hpInt")
+      hp.append(div)
+      let hpUp = document.createElement('button')
+      hpUp.innerText = "HP UP"
+      hpUp.addEventListener('click',(e)=>{
+          e.preventDefault()
+          let newHp = parseInt(document.querySelector(".hpInt").innerText)+1
+          document.querySelector(".hpInt").innerText = newHp
+
+      })
+      document.querySelector('.hp').append(hpUp)
+
+      let hpDown = document.createElement('button')
+      hpDown.innerText = "HP DOWN"
+      hpDown.addEventListener('click',(e)=>{
+          e.preventDefault()
+          let newHp = parseInt(document.querySelector(".hpInt").innerText)-1
+          document.querySelector(".hpInt").innerText = newHp
+      })
+      document.querySelector('.hp').append(hpDown)
+
+    })
+
 }
 
 function deleteChar(charToDelete){
@@ -329,7 +371,7 @@ function newCharRender(char){
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
 
     currentChar = char
-    button.innerText = "edit"
+    button.innerText = "Edit"
     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     // form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     document.querySelector('.strength').innerText = `Strength: ${char.strength}`
