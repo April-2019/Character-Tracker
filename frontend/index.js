@@ -46,6 +46,7 @@ button.innerText = "Submit"
 button.addEventListener("click", (e) =>{
     e.preventDefault()
     if (button.innerText == "Submit"){
+        debugger
         postChar()
             //switch divs inner text
         button.innerText = "Edit"
@@ -74,6 +75,7 @@ deleteButton.addEventListener("click",(e)=>{
     let charToDelete = currentChar
     deleteChar(charToDelete)
 })
+
 
 
 function postChar(){
@@ -175,6 +177,7 @@ function renderCharacter(char){
 
 function renderRace(race){
     let opt = document.createElement("option")
+    // debugger
     opt.innerText = race.name
     select2.append(opt)
 }
