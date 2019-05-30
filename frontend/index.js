@@ -44,7 +44,6 @@ button.innerText = "Submit"
 button.addEventListener("click", (e) =>{
     e.preventDefault()
     if (button.innerText == "Submit"){
-        debugger
         postChar()
             //switch divs inner text
         button.innerText = "Edit"
@@ -142,6 +141,8 @@ deleteButton.addEventListener("click",(e)=>{
 
 
 function postChar(){
+    let race_name = allRaces.find(race => race.name === form[1].value)
+    let class_name = allClasses.find(clas => clas.name === form[2].value)
     fetch(CharacterURL,{
         method: 'POST',
         headers: {
@@ -149,8 +150,8 @@ function postChar(){
         },
         body: JSON.stringify({
             'name' : form[3].value,
-            'race_id' : form[1].value,
-            'class_value' : form[2].value,
+            'race_id' : race_name.id,
+            'class_value' : class_name.id,
             'skill' : form[10].value,
             'inventory' : form[13].value,
             // 'exp' : placeholder,
@@ -161,7 +162,7 @@ function postChar(){
             'wisdom' : form[8].value,
             'charisma' : form[9].value,
             'hitpoints' : form[12].value,
-            'image_url' : form[14].value
+            'image_url' : form.image.value
             // 'level' : placeholder
         })
     })
