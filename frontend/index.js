@@ -329,7 +329,7 @@ function newCharRender(char){
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
 
     currentChar = char
-    button.innerText = "edit"
+    button.innerText = "Edit"
     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     // form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     document.querySelector('.strength').innerText = `Strength: ${char.strength}`
