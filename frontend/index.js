@@ -347,10 +347,9 @@ function newCharRender(char){
     div.setAttribute("class","hpInt")
     hp.append(div)
     form.inventory.value = char.inventory
-    let img = document.querySelector('.image').firstElementChild
+    let img = document.querySelector('.image').children[1]
     img.src = char.image_url
 
-    document.querySelector('.image').append(img)
 
 }
 
