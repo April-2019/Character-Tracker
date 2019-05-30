@@ -40,7 +40,7 @@ select3.append(option3)
 let dimg = document.createElement('img')
 dimg.src = "Dragon4.png"
 dimg.alt = "Broken"
-dimg.style = "position:absolute; right:1"
+// dimg.style = "position:absolute; right:11px"
 document.querySelector('.dragon').append(dimg)
 
 // debugger
