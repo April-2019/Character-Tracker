@@ -27,6 +27,13 @@ option2.selected = true
 option2.disabled = true
 select2.append(option2)
     
+let option3 = document.createElement('option')
+option3.innerText = "Select Class"
+option3.selected = true
+option3.disabled = true
+select3.append(option3)
+
+
 let button = document.createElement("button")
 let submitForm = document.querySelector(".submit")
 submitForm.append(button)
@@ -35,29 +42,26 @@ button.innerText = "Submit"
     
 button.addEventListener("click", (e) =>{
     e.preventDefault()
-    postChar()
-    console.log("got here")
-    button.disabled = true
-    // if (button.innerText == "Submit"){
-    //     // function postChar()
-    //     button.innerText = "Edit"
-    // }
-    // else if(button.innerText == "Edit"){
-    //     button.innerText = "Enter"
-    // }
+    if (button.innerText == "Submit"){
+        postChar()
+            //switch divs inner text
+        button.innerText = "Edit"
+        console.log("switching to Edit")
+    }
+    else if(button.innerText == "Edit"){
+        button.innerText = "Enter"
+        // swtich divs to text boxes with values
+        console.log("switching to Enter")
+    }
     
-    // else {
-    //     // function patchChar()
-    //     console.log("woah")
-    //     button.innerText = "Edit"
-    // }
+    else {
+        // function patchChar()
+        
+        button.innerText = "Edit"
+        console.log("switching back to Edit")
+    }
 })
 
-let option3 = document.createElement('option')
-option3.innerText = "Select Class"
-option3.selected = true
-option3.disabled = true
-select3.append(option3)
 
 
 function postChar(){
@@ -161,11 +165,15 @@ function renderClass(pants){
 
 select1.addEventListener('change',(e)=>{
     let char = allChars.find(char => char.id === e.target.selectedIndex)
+    // debugger
     let race_name = allRaces.find(race => race.id === char.race_id)
+
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
     button.innerText = "edit"
-    document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
-    document.querySelector('.strength').innerText = `Strength: ${char.strength}`
+    // document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+    form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+    // document.querySelector('.strength').innerText = `Strength: ${char.strength}`
+    form[4].value = `Strength: ${char.strength}`
     document.querySelector('.dexterity').innerText = `Dexterity: ${char.dexterity}`
     document.querySelector('.constitution').innerText = `Constitution: ${char.constitution}`
     document.querySelector('.intelligence').innerText = `Intelligence: ${char.intelligence}`
