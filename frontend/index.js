@@ -257,6 +257,7 @@ function renderClass(pants){
 select1.addEventListener('change',(e)=>{
     let char = allChars.find(char => char.id === e.target.selectedIndex)
 
+
     // debugger
     // let race_name = allRaces.find(race => race.id === char.race_id)
 
@@ -287,6 +288,7 @@ select1.addEventListener('change',(e)=>{
 //     img.src = char.image_url
 
 //     document.querySelector('.image').append(img)
+
 
 })
 
