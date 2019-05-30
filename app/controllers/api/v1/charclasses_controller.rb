@@ -1,8 +1,12 @@
 class Api::V1::CharclassesController < ApplicationController
-    before_action :find_charclass, only: [:update]
+    before_action :find_charclass, only: [:update, :show]
     def index
       @charclasses = Charclass.all
       render json: @charclasses
+    end
+
+    def show
+      render json: @charclass
     end
 
     def update

@@ -1,8 +1,12 @@
 class Api::V1::RacesController < ApplicationController
-    before_action :find_race, only: [:update]
+    before_action :find_race, only: [:update, :show]
     def index
       @races = Race.all
       render json: @races
+    end
+
+    def show
+      render json: @race
     end
 
     def update
