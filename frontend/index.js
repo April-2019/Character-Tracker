@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
 
@@ -197,3 +198,4 @@ fetchingCharacters()
 fetchingRaces()
 fetchingClasses()
 })
+
