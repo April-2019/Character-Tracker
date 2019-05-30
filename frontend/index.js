@@ -199,12 +199,35 @@ select1.addEventListener('change',(e)=>{
     document.querySelector('.wisdom').innerText = `Wisdom: ${char.wisdom}`
     document.querySelector('.charisma').innerText = `Charisma: ${char.charisma}`
     document.querySelector('.skills').innerText = `Skills: ${char.skill}`
-    document.querySelector('.hp').innerText = `Health: ${char.hitpoints}`
+    let hp = document.querySelector('.hp').firstElementChild
+    hp.innerText = "Health:"
+    let div = document.createElement('div')
+    div.innerText = `${char.hitpoints}`
+    div.setAttribute("class","hpInt")
+    hp.append(div)
     form.inventory.value = char.inventory
     let img = document.querySelector('.image').firstElementChild
     img.src = char.image_url
 })
 
+let hpUp = document.createElement('button')
+hpUp.innerText = "HP UP"
+hpUp.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let newHp = parseInt(document.querySelector(".hpInt").innerText)+1
+    document.querySelector(".hpInt").innerText = newHp
+
+})
+document.querySelector('.hp').append(hpUp)
+
+let hpDown = document.createElement('button')
+hpDown.innerText = "HP DOWN"
+hpDown.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let newHp = parseInt(document.querySelector(".hpInt").innerText)-1
+    document.querySelector(".hpInt").innerText = newHp
+})
+document.querySelector('.hp').append(hpDown)
 
 
 dropdown1.append(select1)
