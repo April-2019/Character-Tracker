@@ -1,5 +1,5 @@
 class Api::V1::CharactersController < ApplicationController
-    before_action :find_character, only: [:update, :show]
+    before_action :find_character, only: [:update, :show, :delete]
     def index
       @characters = Character.all
       render json: @characters
@@ -22,6 +22,10 @@ class Api::V1::CharactersController < ApplicationController
       else
         render json: { errors: @character.errors.full_messages }, status: :unprocessible_entity
       end
+    end
+
+    def delete
+      @character.destroy
     end
    
     private
