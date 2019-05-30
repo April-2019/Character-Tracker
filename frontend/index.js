@@ -15,6 +15,8 @@ const select1 = document.createElement('select')
 const select2 = document.createElement('select')
 const select3 = document.createElement('select')
 const form = document.querySelector('#character_form')
+let submitForm = document.querySelector(".submit")
+let currentChar = ""
 
 let option1 = document.createElement('option')
 option1.innerText = "Select a Character"
@@ -36,10 +38,8 @@ select3.append(option3)
 
 
 let button = document.createElement("button")
-let submitForm = document.querySelector(".submit")
 submitForm.append(button)
 button.innerText = "Submit"
-
 
 button.addEventListener("click", (e) =>{
     e.preventDefault()
@@ -128,6 +128,15 @@ button.addEventListener("click", (e) =>{
     }
 })
 
+let deleteButton = document.createElement('button')
+deleteButton.innerText = "Delete"
+submitForm.append(deleteButton)
+
+deleteButton.addEventListener("click",(e)=>{
+    e.preventDefault()
+    let charToDelete = currentChar
+    deleteChar(charToDelete)
+})
 
 
 function postChar(){
@@ -184,6 +193,16 @@ function patchChar(id){
     })
 }
 
+function deleteChar(charToDelete){
+    let id = charToDelete.id
+    let url = `${CharacterURL}` + `/` + `${id}`
+    // debugger
+    return fetch(url,{
+        method: `DELETE`
+    })
+    .then(response => response.json())
+}
+
 function fetchingCharacters(){
     fetch(CharacterURL)
     .then(res => res.json())
@@ -235,25 +254,51 @@ select1.addEventListener('change',(e)=>{
     let race_name = allRaces.find(race => race.id === char.race_id)
 
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
-    button.innerText = "Edit"
+
+    currentChar = char
+    button.innerText = "edit"
     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
-    //form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+    // form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     document.querySelector('.strength').innerText = `Strength: ${char.strength}`
-    //form[4].value = `Strength: ${char.strength}`
+    // form[4].value = `Strength: ${char.strength}`
     document.querySelector('.dexterity').innerText = `Dexterity: ${char.dexterity}`
     document.querySelector('.constitution').innerText = `Constitution: ${char.constitution}`
     document.querySelector('.intelligence').innerText = `Intelligence: ${char.intelligence}`
     document.querySelector('.wisdom').innerText = `Wisdom: ${char.wisdom}`
     document.querySelector('.charisma').innerText = `Charisma: ${char.charisma}`
     document.querySelector('.skills').innerText = `Skills: ${char.skill}`
-    document.querySelector('.hp').innerText = `Health: ${char.hitpoints}`
+    let hp = document.querySelector('.hp').firstElementChild
+    hp.innerText = "Health:"
+    let div = document.createElement('div')
+    div.innerText = `${char.hitpoints}`
+    div.setAttribute("class","hpInt")
+    hp.append(div)
     form.inventory.value = char.inventory
-    let img = document.createElement('img')
+    let img = document.querySelector('.image').firstElementChild
     img.src = char.image_url
+
     document.querySelector('.image').append(img)
 
 })
 
+let hpUp = document.createElement('button')
+hpUp.innerText = "HP UP"
+hpUp.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let newHp = parseInt(document.querySelector(".hpInt").innerText)+1
+    document.querySelector(".hpInt").innerText = newHp
+
+})
+document.querySelector('.hp').append(hpUp)
+
+let hpDown = document.createElement('button')
+hpDown.innerText = "HP DOWN"
+hpDown.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let newHp = parseInt(document.querySelector(".hpInt").innerText)-1
+    document.querySelector(".hpInt").innerText = newHp
+})
+document.querySelector('.hp').append(hpDown)
 
 
 dropdown1.append(select1)

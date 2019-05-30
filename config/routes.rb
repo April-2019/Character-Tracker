@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
       # custom handler
       post '/characters', to: 'characters#create'
+      delete '/characters/:id', to: 'characters#destroy'
     end
   end
 end
