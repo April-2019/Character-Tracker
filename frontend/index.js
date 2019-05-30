@@ -132,9 +132,12 @@ function patchChar(id){
 
 function deleteChar(charToDelete){
     let id = charToDelete.id
-    fetch(`http://localhost:3000/api/v1/characters/${id}`,{
-        method: "DELETE"
+    let url = `${CharacterURL}` + `/` + `${id}`
+    // debugger
+    return fetch(url,{
+        method: `DELETE`
     })
+    .then(response => response.json())
 }
 
 function fetchingCharacters(){
