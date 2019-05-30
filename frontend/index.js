@@ -29,7 +29,7 @@ option2.innerText = "Select Race"
 option2.selected = true
 option2.disabled = true
 select2.append(option2)
-    
+
 let option3 = document.createElement('option')
 option3.innerText = "Select Class"
 option3.selected = true
@@ -40,8 +40,6 @@ select3.append(option3)
 let button = document.createElement("button")
 submitForm.append(button)
 button.innerText = "Submit"
-
-
 
 button.addEventListener("click", (e) =>{
     e.preventDefault()
@@ -54,14 +52,79 @@ button.addEventListener("click", (e) =>{
     }
     else if(button.innerText == "Edit"){
         button.innerText = "Enter"
-        // swtich divs to text boxes with values
+        let char = allChars.find(char => char.name === form[0].value)
+        let imageInput = document.querySelector("#character_form")
+
+        let strengthInput = document.createElement('input')
+        strengthInput.type = "text"
+        strengthInput.name = "strength"
+        strengthInput.value = `${char.strength}`
+        let dexterityInput = document.createElement('input')
+        dexterityInput.type = "text"
+        dexterityInput.name = "dexterity"
+        dexterityInput.value = `${char.dexterity}`
+        let constitutionInput = document.createElement('input')
+        constitutionInput.type = "text"
+        constitutionInput.name = "constitution"
+        constitutionInput.value = `${char.constitution}`
+        let intelligenceInput = document.createElement('input')
+        intelligenceInput.type = "text"
+        intelligenceInput.name = "intelligence"
+        intelligenceInput.value = `${char.intelligence}`
+        let wisdomInput = document.createElement('input')
+        wisdomInput.type = "text"
+        wisdomInput.name = "wisdom"
+        wisdomInput.value = `${char.wisdom}`
+        let charismaInput = document.createElement('input')
+        charismaInput.type = "text"
+        charismaInput.name = "charisma"
+        charismaInput.value = `${char.charisma}`
+        let skillInput = document.createElement('textarea')
+        skillInput.type = "text"
+        skillInput.name = "skill"
+        skillInput.value = `${char.skill}`
+        let hpInput = document.createElement('input')
+        hpInput.type = "text"
+        hpInput.name = "hp"
+        hpInput.value = `${char.hitpoints}`
+        document.querySelector('.strength').innerText = "Strength:"
+        document.querySelector('.dexterity').innerText = "Dexterity:"
+        document.querySelector('.constitution').innerText = "Constitution:"
+        document.querySelector('.intelligence').innerText = "Intelligence:"
+        document.querySelector('.wisdom').innerText = "Wisdom:"
+        document.querySelector('.charisma').innerText = "Charisma:"
+        document.querySelector('.skills').innerText = "Skills:"
+        document.querySelector('.hp').innerText = "Health:"
+        document.querySelector('.strength').append(strengthInput)
+        document.querySelector('.dexterity').append(dexterityInput)
+        document.querySelector('.constitution').append(constitutionInput)
+        document.querySelector('.intelligence').append(intelligenceInput)
+        document.querySelector('.wisdom').append(wisdomInput)
+        document.querySelector('.charisma').append(charismaInput)
+        document.querySelector('.skills').append(skillInput)
+        document.querySelector('.hp').append(hpInput)
+        imageInput[13].value = `${char.image_url}`
         console.log("switching to Enter")
     }
-    
-    else {
-        // function patchChar()
-        
+
+    else if(button.innerText == "Enter"){
+        let char = allChars.find(char => char.name === form[0].value)
+        let race_name = allRaces.find(race => race.id === char.race_id)
+
+        let shirt = allClasses.find(shirt => shirt.id === char.class_value)
+        patchChar(char.id)
         button.innerText = "Edit"
+        document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+        //form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+        document.querySelector('.strength').innerText = `Strength: ${char.strength}`
+        //form[4].value = `Strength: ${char.strength}`
+        document.querySelector('.dexterity').innerText = `Dexterity: ${char.dexterity}`
+        document.querySelector('.constitution').innerText = `Constitution: ${char.constitution}`
+        document.querySelector('.intelligence').innerText = `Intelligence: ${char.intelligence}`
+        document.querySelector('.wisdom').innerText = `Wisdom: ${char.wisdom}`
+        document.querySelector('.charisma').innerText = `Charisma: ${char.charisma}`
+        document.querySelector('.skills').innerText = `Skills: ${char.skill}`
+        document.querySelector('.hp').innerText = `Health: ${char.hitpoints}`
         console.log("switching back to Edit")
     }
 })
@@ -113,20 +176,20 @@ function patchChar(id){
             'Content-Type' : 'application/json'
         },
         body: JSON.stringify({
-            'name' : form[3].value,
-            'race_id' : form[1].value,
-            'class_value' : form[2].value,
-            'skill' : form[10].value,
-            'inventory' : form[13].value,
+            //'name' : form[3].value,
+            //'race_id' : form[1].value,
+            //'class_value' : form[2].value,
+            'skill' : form[9].value,
+            'inventory' : form[12].value,
             // 'exp' : placeholder,
-            'strength' : form[4],
-            'dexterity' : form[5].value,
-            'constitution' : form[6].value,
-            'intelligence' : form[7].value,
-            'wisdom' : form[8].value,
-            'charisma' : form[9].value,
-            'hitpoints' : form[12].value,
-            'image_url' : form[14].value
+            'strength' : form[3],
+            'dexterity' : form[4].value,
+            'constitution' : form[5].value,
+            'intelligence' : form[6].value,
+            'wisdom' : form[7].value,
+            'charisma' : form[8].value,
+            'hitpoints' : form[11].value,
+            'image_url' : form[13].value
             // 'level' : placeholder
         })
     })
@@ -194,6 +257,7 @@ select1.addEventListener('change',(e)=>{
     let race_name = allRaces.find(race => race.id === char.race_id)
 
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
+
     currentChar = char
     button.innerText = "edit"
     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
@@ -215,6 +279,9 @@ select1.addEventListener('change',(e)=>{
     form.inventory.value = char.inventory
     let img = document.querySelector('.image').firstElementChild
     img.src = char.image_url
+
+    document.querySelector('.image').append(img)
+
 })
 
 let hpUp = document.createElement('button')
@@ -244,4 +311,3 @@ fetchingCharacters()
 fetchingRaces()
 fetchingClasses()
 })
-
