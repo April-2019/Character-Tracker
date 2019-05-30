@@ -216,6 +216,8 @@ function patchChar(id){
       let div = document.createElement('div')
       div.innerText = `${obj.hitpoints}`
       div.setAttribute("class","hpInt")
+      let img = document.querySelector('.image').children[1]
+      img.src = obj.image_url
       hp.append(div)
       let hpUp = document.createElement('button')
       hpUp.innerText = "HP UP"
