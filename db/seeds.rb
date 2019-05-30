@@ -16,7 +16,7 @@ races = ["Human", "Dwarf (Hill Dwarf)", "Dwarf (Mountain Dwarf)", "Elf (High Elf
 "Aarakocra (Birdfolk)", "Eladrin (Feywild Elf)", "Firbolg (Forest Giant)", "Genasi (Air Blooded)", "Genasi (Earth Blooded)", "Genasi (Fire Blooded)",
 "Genasi (Water Blooded)", "Gnome (Deep Gnome/Svirfneblin)", "Kenku (Ravenfolk)", "Lizardfolk", "Minotaur (Krynn-born)", "Tabaxi (Catfolk)", "Triton (Seafolk)",
 "Bugbear", "Goblin", "Hobgoblin", "Kobold", "Orc", "Yuan-ti Pureblood", "Changeling", "Beasthide Shifter", "Cliffwalk Shifter", "Longstride Shifter",
-"Longtooth Shifter", "Razorclaw Shifter", "Wildhunt Shifter", "Warforged"]
+"Longtooth Shifter", "Razorclaw Shifter", "Wildhunt Shifter", "Warforged", "Corgi"]
 
 races.each do |race|
   Race.create(name: race)
@@ -32,12 +32,13 @@ charclasses = ["Barbarian (Path of the Berserker)", "Barbarian (Path of the Bear
 "Paladin (Oath of Vengeance)", "Ranger (Hunter)", "Ranger (Beast Master)", "Rogue (Thief)", "Rogue (Assassin)", "Rogue (Arcane Trickster)", "Sorcerer (Draconic Bloodline)",
 "Sorcerer (Wild Magic)", "Warlock (Pact with The Archfey)", "Warlock (Pact with The Fiend)", "Warlock (Pact with The Great Old One)", "Wizard (Abjuration Tradition)",
 "Wizard (Conjuration Tradition)", "Wizard (Divination Tradition)", "Wizard (Enchantment Tradition)", "Wizard (Evocation Tradition)", "Wizard (Illusion Tradition)",
-"Wizard (Necromancy Tradition)", "Paladin (Oathbreaker, “Anti-Paladin”)"]
+"Wizard (Necromancy Tradition)", "Paladin (Oathbreaker, “Anti-Paladin”)", "King"]
 
 charclasses.each do |charclass|
   Charclass.create(name: charclass)
 end
 
 a = Character.create(name: 'Charles', gender: 'Male', race_id: 5, class_value: 5, skill: 'Stealth', inventory: 'empty', exp: 100, strength: 20, dexterity: 40, constitution: 60, wisdom: 20, charisma: 80, hitpoints:20, level: 5, image_url: "https://www.joshuad.net/new-bard-handbook-files/imgs/savage.jpg")
-b = Character.create(name: 'Chris', gender: 'Male', race_id: 1, class_value: 24, skill: 'Stealth', inventory: 'empty', exp: 101, strength: 20, dexterity: 40, constitution: 60, wisdom: 20, charisma: 80, hitpoints:20, level: 5, image_url: "https://i.pinimg.com/originals/81/a0/42/81a042f4a84125bc5aad1f8b3a4c5dde.jpg")
-c = Character.create(name: 'Minh', gender: 'Male', race_id: 2, class_value: 10, skill: 'Stealth', inventory: 'empty', exp: 100, strength: 21, dexterity: 40, constitution: 60, wisdom: 20, charisma: 80, hitpoints:20, level: 5, image_url: "https://i.pinimg.com/originals/bf/cc/58/bfcc5890d464dd19cf7e990af9add5b3.jpg")
+b = Character.create(name: 'Chris', gender: 'Male', race_id: 1, class_value: 24, skill: 'Stealth', inventory: 'empty', exp: 101, strength: 20, dexterity: 40, constitution: 60, intelligence: 18, wisdom: 20, charisma: 80, hitpoints:20, level: 5, image_url: "https://i.pinimg.com/originals/81/a0/42/81a042f4a84125bc5aad1f8b3a4c5dde.jpg")
+d = Character.create(name: 'Nikki', gender: 'NonBinary', race_id: 6, class_value: 36, skill: 'Stealth', inventory: 'A bunch of daggers', exp: 100, strength: 21, dexterity: 40, constitution: 60, intelligence: 18, wisdom: 20, charisma: 80, hitpoints:20, level: 5, image_url: "https://preview.redd.it/06s1oalqk6011.png?width=640&crop=smart&auto=webp&s=d8ee214625df03ac6a9d03f2068f57e2111cf2d2")
+c = Character.create(name: 'Minh', gender: 'Male', race_id: 51, class_value: 52, skill: 'Stealth', inventory: 'empty', exp: 100, strength: 21, dexterity: 40, constitution: 60, intelligence: 18, wisdom: 20, charisma: 80, hitpoints:20, level: 5, image_url: "https://pbs.twimg.com/profile_images/800900185538707456/jQfSvqyh_400x400.jpg")
