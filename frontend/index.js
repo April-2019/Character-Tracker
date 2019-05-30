@@ -17,6 +17,7 @@ const select3 = document.createElement('select')
 const form = document.querySelector('#character_form')
 let submitForm = document.querySelector(".submit")
 let currentChar = ""
+// const header = document.querySelector(".header")
 
 let option1 = document.createElement('option')
 option1.innerText = "Select a Character"
@@ -35,6 +36,14 @@ option3.innerText = "Select Class"
 option3.selected = true
 option3.disabled = true
 select3.append(option3)
+
+let dimg = document.createElement('img')
+dimg.src = "Dragon4.png"
+dimg.alt = "Broken"
+dimg.style = "position:absolute; right:1"
+document.querySelector('.dragon').append(dimg)
+
+// debugger
 
 
 let button = document.createElement("button")
