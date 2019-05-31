@@ -56,10 +56,8 @@ button.addEventListener("click", (e) =>{
       fetch(CharacterURL)
         .then(res => res.json())
         .then(data => {
-
+        let form = document.querySelector("#character_form")
         let char = data.find(char => char.name === form[0].value)
-        let imageInput = document.querySelector("#character_form")
-
         let strengthInput = document.createElement('input')
         strengthInput.type = "text"
         strengthInput.name = "strength"
@@ -113,7 +111,7 @@ button.addEventListener("click", (e) =>{
         document.querySelector('.charisma').append(charismaInput)
         document.querySelector('.skills').append(skillInput)
         document.querySelector('.hp').append(hpInput)
-        imageInput[14].value = `${char.image_url}`
+        form[14].value = `${char.image_url}`
         console.log("switching to Enter")
       })
     }
@@ -315,8 +313,6 @@ function renderClass(pants){
 
 select1.addEventListener('change',(e)=>{
     let char = allChars.find(char => char.id === e.target.selectedIndex)
-
-
     // debugger
     // let race_name = allRaces.find(race => race.id === char.race_id)
 
@@ -324,10 +320,8 @@ select1.addEventListener('change',(e)=>{
     fetch(CharacterURL)
     .then(res => res.json())
     .then(data => {
-        data.forEach(char => newCharRender(char))
+        newCharRender(char)
     })
-
-
 //     currentChar = char
 //     button.innerText = "edit"
 //     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
