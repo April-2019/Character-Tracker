@@ -331,6 +331,7 @@ select1.addEventListener('change',(e)=>{
     .then(data => {
       let char = data.find(char => char.id === e.target.selectedIndex)
         newCharRender(char)
+        currentChar = char
     })
 //     currentChar = char
 //     button.innerText = "edit"
