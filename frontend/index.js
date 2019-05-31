@@ -62,7 +62,11 @@ button.addEventListener("click", (e) =>{
     }
     else if(button.innerText == "Edit"){
         button.innerText = "Enter"
-        let char = allChars.find(char => char.name === form[0].value)
+      fetch(CharacterURL)
+        .then(res => res.json())
+        .then(data => {
+
+        let char = data.find(char => char.name === form[0].value)
         let imageInput = document.querySelector("#character_form")
 
         let strengthInput = document.createElement('input')
@@ -97,6 +101,11 @@ button.addEventListener("click", (e) =>{
         hpInput.type = "text"
         hpInput.name = "hp"
         hpInput.value = `${char.hitpoints}`
+        let levelInput = document.createElement('input')
+        levelInput.type = "text"
+        levelInput.value = `${char.level}`
+        document.querySelector('.name').innerText = "Level:"
+        document.querySelector('.name').append(levelInput)
         document.querySelector('.strength').innerText = "Strength:"
         document.querySelector('.dexterity').innerText = "Dexterity:"
         document.querySelector('.constitution').innerText = "Constitution:"
@@ -113,8 +122,9 @@ button.addEventListener("click", (e) =>{
         document.querySelector('.charisma').append(charismaInput)
         document.querySelector('.skills').append(skillInput)
         document.querySelector('.hp').append(hpInput)
-        imageInput[13].value = `${char.image_url}`
+        imageInput[14].value = `${char.image_url}`
         console.log("switching to Enter")
+      })
     }
 
     else if(button.innerText == "Enter"){
@@ -122,19 +132,22 @@ button.addEventListener("click", (e) =>{
         let race_name = allRaces.find(race => race.id === char.race_id)
 
         let shirt = allClasses.find(shirt => shirt.id === char.class_value)
+
         patchChar(char.id)
+
+        // newCharRender(char)
         button.innerText = "Edit"
-        document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
-        //form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
-        document.querySelector('.strength').innerText = `Strength: ${char.strength}`
-        //form[4].value = `Strength: ${char.strength}`
-        document.querySelector('.dexterity').innerText = `Dexterity: ${char.dexterity}`
-        document.querySelector('.constitution').innerText = `Constitution: ${char.constitution}`
-        document.querySelector('.intelligence').innerText = `Intelligence: ${char.intelligence}`
-        document.querySelector('.wisdom').innerText = `Wisdom: ${char.wisdom}`
-        document.querySelector('.charisma').innerText = `Charisma: ${char.charisma}`
-        document.querySelector('.skills').innerText = `Skills: ${char.skill}`
-        document.querySelector('.hp').innerText = `Health: ${char.hitpoints}`
+        // document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+        // //form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
+        // document.querySelector('.strength').innerText = `Strength: ${char.strength}`
+        // //form[4].value = `Strength: ${char.strength}`
+        // document.querySelector('.dexterity').innerText = `Dexterity: ${char.dexterity}`
+        // document.querySelector('.constitution').innerText = `Constitution: ${char.constitution}`
+        // document.querySelector('.intelligence').innerText = `Intelligence: ${char.intelligence}`
+        // document.querySelector('.wisdom').innerText = `Wisdom: ${char.wisdom}`
+        // document.querySelector('.charisma').innerText = `Charisma: ${char.charisma}`
+        // document.querySelector('.skills').innerText = `Skills: ${char.skill}`
+        // document.querySelector('.hp').innerText = `Health: ${char.hitpoints}`
         console.log("switching back to Edit")
     }
 })
@@ -191,18 +204,18 @@ function patchChar(id){
             //'name' : form[3].value,
             //'race_id' : form[1].value,
             //'class_value' : form[2].value,
-            'skill' : form[9].value,
-            'inventory' : form[12].value,
+            'skill' : form[10].value,
+            'inventory' : form[13].value,
             // 'exp' : placeholder,
-            'strength' : form[3].value,
-            'dexterity' : form[4].value,
-            'constitution' : form[5].value,
-            'intelligence' : form[6].value,
-            'wisdom' : form[7].value,
-            'charisma' : form[8].value,
-            'hitpoints' : form[11].value,
-            'image_url' : form[13].value
-            // 'level' : placeholder
+            'strength' : form[4].value,
+            'dexterity' : form[5].value,
+            'constitution' : form[6].value,
+            'intelligence' : form[7].value,
+            'wisdom' : form[8].value,
+            'charisma' : form[9].value,
+            'hitpoints' : form[12].value,
+            'image_url' : form[14].value,
+            'level' : form[3].value
         })
     })
     .then(res => res.json())
@@ -307,6 +320,8 @@ function renderClass(pants){
     select3.append(opt)
 }
 
+
+
 select1.addEventListener('change',(e)=>{
     let char = allChars.find(char => char.id === e.target.selectedIndex)
 
@@ -315,8 +330,12 @@ select1.addEventListener('change',(e)=>{
     // let race_name = allRaces.find(race => race.id === char.race_id)
 
     // let shirt = allClasses.find(shirt => shirt.id === char.class_value)
+    fetch(CharacterURL)
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(char => newCharRender(char))
+    })
 
-    newCharRender(char)
 
 //     currentChar = char
 //     button.innerText = "edit"
@@ -381,7 +400,7 @@ function newCharRender(char){
 
     let shirt = allClasses.find(shirt => shirt.id === char.class_value)
 
-    currentChar = char
+
     button.innerText = "Edit"
     document.querySelector('.name').innerText = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
     // form[3].value = `${char.name} the level ${char.level} ${race_name.name} ${shirt.name}`
